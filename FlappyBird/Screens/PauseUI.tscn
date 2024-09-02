@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Sprites/start.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/ExitButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Themes/UI_Theme.tres" type="Theme" id=4]
+[ext_resource path="res://Scripts/PauseUI.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Audios/button_click_sound.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="PauseUI" type="Control"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -142.5
+margin_right = 250.0
+margin_bottom = 142.5
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -243.0
+margin_top = -142.5
+margin_right = 243.0
+margin_bottom = 142.5
+color = Color( 0.270588, 0.25098, 0.25098, 0.529412 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 493.0
+margin_bottom = 292.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 466.0
+margin_bottom = 265.0
+alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 148.0
+margin_right = 298.0
+margin_bottom = 245.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ButtonContainer"]
+margin_right = 150.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+text = "Pause"
+align = 1
+
+[node name="Start" type="TextureButton" parent="MarginContainer/HBoxContainer/ButtonContainer"]
+margin_top = 75.0
+margin_right = 150.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 150, 60 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="Exit" parent="MarginContainer/HBoxContainer/ButtonContainer" instance=ExtResource( 2 )]
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ButtonContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ButtonContainer/Exit" to="." method="_on_Exit_pressed"]

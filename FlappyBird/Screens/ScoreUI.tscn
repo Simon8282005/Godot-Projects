@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Themes/UI_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/ScoreUI.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/pause_upscayl_1x_realesrgan-x4plus.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Audios/pause_sound_effect.mp3" type="AudioStream" id=4]
+
+[node name="ScoreScreen" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 40
+custom_constants/margin_left = 60
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 60.0
+margin_top = 40.0
+margin_right = 1004.0
+margin_bottom = 110.0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 14.0
+margin_right = 930.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_constants/separation = 800
+alignment = 2
+
+[node name="Score" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 19.0
+margin_right = 46.0
+margin_bottom = 51.0
+text = "12"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 846.0
+margin_right = 916.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_top = 15.0
+margin_right = 70.0
+margin_bottom = 55.0
+alignment = 1
+
+[node name="Pause" type="TextureButton" parent="VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 70.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer/Pause" to="." method="_on_Pause_pressed"]

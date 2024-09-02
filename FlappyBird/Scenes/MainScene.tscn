@@ -1,0 +1,389 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets/Sprites/background-day.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/base.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/FlappyBird.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/ParallaxBase.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/TestScene.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Background.gd" type="Script" id=6]
+[ext_resource path="res://Screens/ScoreUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/Audios/count_down_sound.wav" type="AudioStream" id=9]
+[ext_resource path="res://Screens/PauseUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Screens/GameOver.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Screens/WhshingScreens/YourScore.tscn" type="PackedScene" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 560.5, 10 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/Label:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Label:custom_fonts/font:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 32 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CountDownSound:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CountDownSound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/Label:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CountDownSound:autoplay")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Control/Label:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Control/Label:rect_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 600 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "count_down"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "3", "2", "1", "Go
+" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 2, 2.2, 3, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.243137 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.243137 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.243137 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Label:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 80 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CountDownSound:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CountDownSound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/Label:custom_fonts/font:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 150, 150 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Control/Label:rect_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 600 ), Vector2( 1024, 600 ) ]
+}
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="FlappyBird" parent="." instance=ExtResource( 3 )]
+position = Vector2( 194, 154 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="SpeedTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 6 )
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 288, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 144, 275 )
+scale = Vector2( 1, 1.36 )
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 429, 275 )
+scale = Vector2( 1, 1.36 )
+texture = ExtResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 712, 275 )
+scale = Vector2( 1, 1.36 )
+texture = ExtResource( 1 )
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 997, 275 )
+scale = Vector2( 1, 1.36 )
+texture = ExtResource( 1 )
+
+[node name="Sprite5" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 1565, 275 )
+scale = Vector2( 1, 1.36 )
+texture = ExtResource( 1 )
+
+[node name="Sprite6" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 2141, 275 )
+scale = Vector2( 1, 1.36 )
+texture = ExtResource( 1 )
+
+[node name="Sprite7" type="Sprite" parent="ParallaxBackground/Background"]
+position = Vector2( 2715, 275 )
+scale = Vector2( 1, 1.36 )
+texture = ExtResource( 1 )
+
+[node name="ParallaxBase" type="ParallaxBackground" parent="."]
+layer = 100
+script = ExtResource( 4 )
+
+[node name="Base" type="ParallaxLayer" parent="ParallaxBase"]
+motion_mirroring = Vector2( 336, 0 )
+
+[node name="Base" type="Sprite" parent="ParallaxBase/Base"]
+position = Vector2( 565, 591 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1024, 0, 1200, 100 )
+
+[node name="Base2" type="Sprite" parent="ParallaxBase/Base"]
+position = Vector2( 2097, 591 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 1024, 0, 1200, 100 )
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 526.5, 548 )
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreScreen" parent="CanvasLayer" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="PauseUI" parent="CanvasLayer" instance=ExtResource( 10 )]
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="Your Score" parent="CanvasLayer" instance=ExtResource( 12 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="CountDown" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Control" type="Control" parent="CountDown"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="Label" type="Label" parent="CountDown/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CountDown"]
+anims/RESET = SubResource( 3 )
+anims/count_down = SubResource( 4 )
+
+[node name="CountDownSound" type="AudioStreamPlayer2D" parent="CountDown"]
+stream = ExtResource( 9 )
+
+[connection signal="timeout" from="SpeedTimer" to="." method="_on_SpeedTimer_timeout"]
+[connection signal="pressed" from="CanvasLayer/ScoreScreen/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer/Pause" to="." method="_on_Pause_pressed"]
+[connection signal="animation_finished" from="CountDown/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="CanvasLayer/ScoreScreen"]
